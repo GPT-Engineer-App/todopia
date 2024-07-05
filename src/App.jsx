@@ -8,6 +8,8 @@ import Inbox from "./pages/Inbox.jsx";
 import Today from "./pages/Today.jsx";
 import Upcoming from "./pages/Upcoming.jsx";
 import Project from "./pages/Project.jsx";
+import { Inbox as InboxIcon, Calendar as TodayIcon, CalendarDays as UpcomingIcon } from "lucide-react"; // Import icons
+
 const queryClient = new QueryClient();
 
 export const navItems = [
