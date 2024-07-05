@@ -36,18 +36,36 @@ const Sidebar = () => (
     <div className="flex h-full max-h-screen flex-col gap-2">
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
-          <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <img src="/logo.png" alt="Logo" className="h-6 w-6" />
+          <span>MyApp</span>
         </NavLink>
       </div>
       <div className="flex-1">
         <nav className="grid items-start px-2 text-sm font-medium lg:px-4 gap-2">
-          {navItems.map((item) => (
-            <SidebarNavLink key={item.to} to={item.to}>
-              {item.icon}
-              {item.title}
-            </SidebarNavLink>
-          ))}
+          <SidebarNavLink to="/inbox">
+            <span>Inbox</span>
+          </SidebarNavLink>
+          <SidebarNavLink to="/today">
+            <span>Today</span>
+          </SidebarNavLink>
+          <SidebarNavLink to="/upcoming">
+            <span>Upcoming</span>
+          </SidebarNavLink>
+          <div className="mt-4">
+            <h2 className="text-xs font-semibold uppercase text-muted-foreground mb-2">
+              Projects
+            </h2>
+            <div className="flex flex-col gap-2">
+              {navItems.map((item) => (
+                <SidebarNavLink key={item.to} to={item.to}>
+                  {item.title}
+                </SidebarNavLink>
+              ))}
+            </div>
+            <Button variant="outline" size="sm" className="mt-2">
+              Add Project
+            </Button>
+          </div>
         </nav>
       </div>
     </div>
