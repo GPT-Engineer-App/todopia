@@ -1,17 +1,30 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Layout from "./layouts/default"; // available: default, navbar, sidebar
+import Layout from "./layouts/sidebar"; // Use the sidebar layout
 import Index from "./pages/Index.jsx";
+import Inbox from "./pages/Inbox.jsx";
+import Today from "./pages/Today.jsx";
+import Upcoming from "./pages/Upcoming.jsx";
+import Project from "./pages/Project.jsx";
 const queryClient = new QueryClient();
 
 export const navItems = [
   {
-    title: "Home", // Feel free to change this to your liking
-    to: "/",
-    icon: <Home className="h-4 w-4" />,
+    title: "Inbox",
+    to: "/inbox",
+    icon: <InboxIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Today",
+    to: "/today",
+    icon: <TodayIcon className="h-4 w-4" />,
+  },
+  {
+    title: "Upcoming",
+    to: "/upcoming",
+    icon: <UpcomingIcon className="h-4 w-4" />,
   },
 ];
 
@@ -24,7 +37,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Index />} />
-              {/* Add more routes here as needed */}
+              <Route path="inbox" element={<Inbox />} />
+              <Route path="today" element={<Today />} />
+              <Route path="upcoming" element={<Upcoming />} />
+              <Route path="project/:id" element={<Project />} />
             </Route>
           </Routes>
         </Router>
